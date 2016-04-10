@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Hello Bootstrap</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style type='text/css'>
+      body {
+        background-color: #CCC;
+      }
+    </style>
+    </head>
+    <body>
+        <h1>hello Bootstrap<h1>
+    </body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">首页</a>
+          <a class="navbar-brand" href="#">测试</a>
+          <a class="navbar-brand" href="#">开发</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right" role="form">
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+</html>
+
+
+
+
+<!-- {% extends "base.html" %}
+  {% block content %}
+      {% for member in members %}
+      <h2>{{  member.name }}</h2>
+      <p>{{ member.gender }}</p>
+      <p>{{ member.master }}</p>
+      {% endfor %}
+  {% endblock %} -->
