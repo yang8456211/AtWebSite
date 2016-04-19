@@ -6,4 +6,4 @@ from django.shortcuts import render_to_response
 
 def index(request):
     members = TeamMate.objects.all()
-    return render_to_response('index.html',{'members':members})
+    return render_to_response('indexper.html',{'members':members})
