@@ -1,6 +1,10 @@
 @charset "utf-8";
 
 
+body{
+	background:url(/static/image/dy_pic11.jpg);
+}
+
 *{
 	word-break:break-all;
 }
