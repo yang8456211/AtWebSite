@@ -1,19 +1,76 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
-		<link rel="stylesheet" href="/static/css/bootstrap.css"/>
-      	<body>
-      		<div class="jumbotron">
-        		<h1>闪电工作室</h1>
-        		<p>充满创新和用于实践，移动端的急先锋！</p>
-        		<p><a class="btn btn-primary btn-lg" role = "button">联系我们`</a></p>
-        	</div>
- 			{% block content %}
-      			{% for member in members %}
-      			    <div class="col-xs-4">
-        				<h2 class="page-header">{{  member.name }}</h1>
-        				<p>擅长:{{member.master}}</p>
-        			</div>
-      			{% endfor %}
-  			{% endblock %}
-     	</body>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>(〃＞皿＜)工作室</title>
+  <meta name="description" content="人无序，大道无常，我们就是(〃＞皿＜)工作室!">
+  <meta name="author" content="Yang Guang">
+
+  <!-- 外部Css -->
+  <link rel="stylesheet" href="/static/css/bootstrap.css"/>
+  <link rel="stylesheet" href="/static/css/customCss/index.css" type="text/css" />
+
+  <!-- 外部JS -->
+  <script src="/static/js/jQuery.js"></script>  
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script src="/static/js/customJs/index.js"></script>
+
+</head>
+<body>
+
+
+  <div id="body" class="mycon">
+    <div class="container">
+      <!-- 第一行 -->
+      <div class = "row">
+        <div class="col-md-12">
+          <div class="jumbotron">
+            <div class="row">
+              <div class="col-md-8">
+                <h1>(〃＞皿＜)工作室</h1>
+                <p style="margin-top:50px;">我是要成为海贼王的男人</p>
+                <p style="margin-top:50px;"><a class="btn btn-primary btn-lg" role="button">联系我们 ^ ^</a></p>
+              </div>
+
+              <div class="col-md-4" style="margin-top:50px;">
+                <img src="/static/image/stone.jpg" 
+                class="img-thumbnail">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 第三行 -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="bodyCon08">
+            <div class="students">
+              <div id="four_flash">
+                <div class="flashBg">
+                  <ul class="mobile">
+                    {% block content %}
+                    {% for member in members %}
+                    <li>
+                      <img src="/static/image/senke_xy00.jpg" />
+                      <dd>{{ member.name }}</dd>
+                      <p>{{ member.master }}</p>
+                    </li>
+                    {% endfor %}
+                    {% endblock %}
+                  </ul>
+                </div>
+                <div class="but_left"><img src="/static/image/qianxleft.png" /></div>
+                <div class="but_right"><img src="/static/image/qianxr.png" /></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
 </html>
