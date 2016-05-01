@@ -30,7 +30,7 @@
             <div class="row">
               <div class="col-md-8">
                 <h1>(〃＞皿＜)工作室</h1>
-                <p style="margin-top:50px;">我是要成为海贼王的男人</p>
+                <p style="margin-top:50px;">强悍的实力、无比的创意，Join us right now！</p>
                 <p style="margin-top:50px;"><a class="btn btn-primary btn-lg" role="button">联系我们 ^ ^</a></p>
               </div>
 
@@ -55,7 +55,7 @@
                     {% block content %}
                     {% for member in members %}
                     <li>
-                      <img src="/static/image/senke_xy00.jpg" />
+                      <img src="/static/image/{{member.image}}" />
                       <dd>{{ member.name }}</dd>
                       <p>{{ member.master }}</p>
                     </li>

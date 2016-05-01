@@ -9,6 +9,8 @@ class TeamMate(models.Model):
 	gender = models.CharField(max_length = 100)
 	# 擅长
 	master = models.CharField(max_length = 100)
+	# 图片名称
+	image = models.CharField(max_length = 100, null=True)
 
 
 class TeamMateAdmin(admin.ModelAdmin):
