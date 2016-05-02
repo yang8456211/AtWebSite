@@ -105,19 +105,6 @@ a:hover{
 	margin-top:10px;
 }
 
-#four_flash .flashBg ul.mobile li a{
-	display:block;
-	background:url(/static/image/jiantou.png);
-	width:31px;
-	height:31px;
-	border:0px;
-	margin:8px auto;
-}
-
-#four_flash .flashBg ul.mobile li a:hover{
-	background:url(/static/image/jiantou2.png);
-}
-
 #four_flash .but_left{
 	width:50px;
 	height:100px;
@@ -145,5 +132,21 @@ a:hover{
 }
 
 
+#maininfo p{
+	margin-top:50px;
+}
 
+#logo {
+	margin-top:50px;
+}
+
+
+#foot {
+	margin-top: 10px;
+}
+
+#foot p{
+	text-align: center;
+	color: #BDBDBD;
+}
 
