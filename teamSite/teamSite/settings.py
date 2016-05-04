@@ -1,3 +1,5 @@
+#coding=utf-8
+
 """
 Django settings for teamSite project.
 
@@ -31,7 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'bootstrap_admin',
+    # 'bootstrap_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -98,12 +100,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 
-# 配置bootstrap
+# bootstrap 配置
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 HERE = os.path.join(HERE, '../')  
