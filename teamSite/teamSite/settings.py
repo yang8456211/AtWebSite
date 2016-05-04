@@ -57,10 +57,17 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'teamSite.urls'
 
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+
+BASIC_URL = os.path.dirname(HERE)  
+
+TEMPLATES_URL = os.path.join(BASIC_URL,"static/templates")
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATES_URL],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -108,11 +115,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 
-# bootstrap 配置
-HERE = os.path.dirname(os.path.abspath(__file__))
-
-HERE = os.path.join(HERE, '../')  
-
+# staitcfile 文件配置
 
 STATIC_URL = '/static/'
 
@@ -124,9 +127,11 @@ STATICFILES_DIRS = (
 
     # Don't forget to use absolute paths, not relative paths.  
 
-    os.path.join(HERE, 'static/'),  
+    os.path.join(BASIC_URL, 'static/'),  
 
 )
 
 if __name__ == '__main__':
-    print (HERE)
+    print (BASIC_URL)
+    print (TEMPLATES_URL)
+
