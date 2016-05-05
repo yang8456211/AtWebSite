@@ -25,4 +25,10 @@ $(function() {
 		$("#four_flash .flashBg ul.mobile").stop().animate({left:-_index5*270},1000);
 	});
 
+	//点击了解更多
+	$("#maininfo a").click(function(){
+		// 以index的路径为基本路径
+		window.location.href="teaminfo";
+	});
+
 });
