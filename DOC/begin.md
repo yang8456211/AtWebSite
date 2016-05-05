@@ -188,7 +188,7 @@ js就是写事件和特效，index.js为例：
     });
     
 1. 这里的js一般都用jquery，jquery是什么？就是封装了js的一个框架，类比于android和afinal。
-2. #four_flash .but_right img 
+2. 例如 #four_flash .but_right img 
    （id为#、class为. ） 通过这种形式来准确找到html中的每一个标签，这里就是要找img标签。
 
         <div id="four_flash"> （id为four_flash）
