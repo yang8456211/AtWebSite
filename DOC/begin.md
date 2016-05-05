@@ -43,10 +43,12 @@
         ├── urls.py
         └── wsgi.py
 
-看到有新建一个module出来，重要的文件
+看到有新建一个module出来（module的名字随便都行）
 
-1. models.py 定义对象的名称属性，基本类型，定义完成之后参考<django的指令－－生成指令>，可以生成对应的数据库，这就是django的orm映射，所有数据库的改动都由models决定，并不用去动数据库。
-2. views.py 我的理解类似于controller，获取models的对象，然后进行展现（获取html）
+介绍一下重要的文件
+
+1. models.py 定义了对象的名称、属性、基本类型等等，定义完成之后参考"django的指令－－生成指令"，来生成对应的数据库表或者同步models的改动到表，这就是django的orm映射，所有数据库的改动都由models决定，并不用手动去动数据库。
+2. views.py 我的理解类似于controller，获取models的对象，然后获取html的模板，把models展现在html上，（语法就参考一下index.html，看看是怎么进行读取的）。
 
 ### 目前的目录工程
 
@@ -63,26 +65,26 @@
     │   │   ├── bootstrap.min.css
     │   │   └── customCss <放自定义的css，其他css文件目录下的都是bootstrap的东西>
     │   │       └── index.css
-    │   ├── database（放数据库）
+    │   ├── database <放数据库>
     │   │   └── teamWeb.sql
     │   ├── fonts（bootstrap的字体目录）
     │   ├── image <放图片的>
     │   ├── js
     │   │   ├── bootstrap.js
     │   │   ├── bootstrap.min.js
-    │   │   ├── customJs
+    │   │   ├── customJs <自己定义的js，其他js文件目录下的都是bootstrap的东西>
     │   │   │   └── index.js
-    │   │   ├── jQuery.js (这个要另外下载放进去的)
+    │   │   ├── jQuery.js (这个要另外下载放进去的，bootstrap的js要依赖jquery，关于bootstrap的js我还没有写例子，暂时直接用的jquery)
     │   │   └── npm.js
-    │   └── templates<html模版我放到这里来了>
+    │   └── templates <html模版我放到这里来了，统一进行管理>
     │       └── index.html
     ├── teamSite
     │   ├── __init__.py
     │   ├── settings.py
     │   ├── urls.py
     │   ├── wsgi.py
-    ├── teaminfo (想做详细界面的app)
-    └── teammate (index对应的app)
+    ├── teaminfo <详细界面的app>
+    └── teammate <index对应的app>
 
 
 **注：任何生成的pyc文件都是python的执行文件，随便删除都可以，也不用在意，因为我已经设置了.gitignore 所以提交的时候也不用管，默认不会提交**
@@ -93,23 +95,24 @@
     
     1.用户请求URL(http://127.0.0.1:8000/index)
     
-    2.由urls.py解析(正则表达式)
+    2.由urls.py解析(以正则表达式的方式，r''代表的是引号里面的字符全部当做普通字符，不用转义)
         urlpatterns = [
             url(r'^admin/', include(admin.site.urls)),
-            url(r'^index/$', 'teammate.views.index'),
+            url(r'^index/$', 'teammate.views.index'), #这个正则就是以所有index为结尾的url
         ]
     分发到teammate这个app的views的index方法
     
-    3. teammate里面的index响应 然后拿TeamMate的所有Obj,展示到index.html里面。
+    3. teammate app里面的index响应 然后拿TeamMate的所有Obj,展示到index.html里面。
         def index(request):
             members = TeamMate.objects.all()
             return render_to_response('index.html',{'members':members})
+            
         3.1 TeamMate：看import就知道，是models里面的 TeamMate类
-        3.2 index.html 我在settings里面配置了TEMPLATES，会去static/templates目录下找同名文件。
+        3.2 index.html 我在settings里面配置了TEMPLATES的获取路径，会去static/templates目录下找同名文件。
         
     4.index.html
          使用 link和script 引入我们写好的css和js（当然还有bootstrap的js和css，这里也可以设置成读远程的cdn）
-         <!-- 外部Css -->
+          <!-- 外部Css -->
           <link rel="stylesheet" href="/static/css/bootstrap.css"/>
           <link rel="stylesheet" href="/static/css/customCss/index.css" type="text/css" />
 
@@ -163,9 +166,9 @@ index.html为例子：
         </div>
       </div>
     
-1. 行的class是row 列是 col－xx-nn(xx代表尺寸，nn代表列数)，一般被分成12列，设计的时候让一行里面所有的nn加起来等于12就可以了。
-2. xx不细说，这里就用md，代表一般电脑上看到的效果，以后适配移动端的时候再加别的。
-3. img-thumbnail 这种就是圆形的图片。
+1. 排版是以行列的形式，行的class是row、列是 col－xx-nn(xx代表尺寸，nn代表列数)，一行一般被分成12列，设计的时候让一行里面所有的nn加起来等于12就可以了。（这里就是col-md-8与col-md-4）
+2. xx不细说，这里就用md，代表一般电脑上看到的效果，以后适配移动端的时候再加别的（好像是sm）。
+3. img-thumbnail 这种就是圆形的图片的类。
 
 可以看出bootstrap就是封装了一些控件，想要什么控件的时候就百度找一下，记得我们是用bootstrap3.3.5的版本。
 
@@ -185,14 +188,17 @@ js就是写事件和特效，index.js为例：
     });
     
 1. 这里的js一般都用jquery，jquery是什么？就是封装了js的一个框架，类比于android和afinal。
-2. \#four_flash .but_right img （id 为# class 为. ） 通过这种形式来准备找到html中的每一个标签。
+2. #four_flash .but_right img 
+   （id为#、class为. ） 通过这种形式来准确找到html中的每一个标签，这里就是要找img标签。
 
         <div id="four_flash"> （id为four_flash）
           <div class="flashBg"> （class为but_right）
             <ul class="mobile">
               <li>
                 <img src="/static/image/{{member.image}}" /> （img标签）
+                
 3. click里面就是具体的事件了，和java语法比较像
+4. 类似这种.stop().animate({left:-_index5*270},1000)，都是一些jquery封装的语法，很简单不用担心。
 
 # CSS 怎么写？
 
@@ -209,19 +215,19 @@ index.css为例：
         color:#6C6E85;
     }
     
-1. 和js一样的方法去找到那个标签（或者是一类标签）
-2. ／#four_flash .flashBg ul.mobile li : id为four_flash，class为flashBg 的\<ul\>标签中的 id为mobile的\<li\>标签。
+1. 和js一样的方法去找到那个标签（或者是一类标签，有时候可能我要把一个class下面的所有文本标签p都改变一下字体）
+2. #four_flash .flashBg ul.mobile li 就是找到 id为four_flash，class为flashBg的\<ul\>标签中的，id为mobile的\<li\>标签。（js那个例子中的li标签）
 3. 属性不说
 
 # 怎么开发与调试？
 
 ## 工程运行与查看
-1. <django的指令－－跑工程>
+1. 指令:"django的指令－－跑工程"
 2. 直接在浏览器看 http://127.0.0.1:8000/index/
 
 ## IDE与调试
-1. 我是用sublime 3写的
-2. 用chrome的开发者模式，进行细调（快捷键是ALT+花+I）
+1. 我是用sublime 3写的,感觉一般，排版有点蛋疼
+2. 调试用chrome的开发者模式，进行细调（Mac快捷键是ALT+花+I）
     
     
         
