@@ -27,7 +27,7 @@ $(function() {
 
 	//点击了解更多
 	$("#maininfo a").click(function(){
-		// 以index的路径为基本路径
+		// 以index的路径为基本路径 http://127.0.0.1:8000/index/teaminfo
 		window.location.href="teaminfo";
 	});
 

@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>(〃＞皿＜)工作室</title>
+  <meta name="description" content="人无序，大道无常，我们就是(〃＞皿＜)工作室!">
+  <meta name="author" content="Yang Guang">
+
+  <!-- 外部Css -->
+  <link rel="stylesheet" href="/static/css/bootstrap.css"/>
+  <link rel="stylesheet" href="/static/css/customCss/teammate.css" type="text/css" />
+
+  <!-- 外部JS -->
+  <script src="/static/js/jQuery.js"></script>  
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script src="/static/js/customJs/teammate.js"></script>
+
+</head>
+<body>
+
+
+  <div id="body" class="mycon">
+    <div class="container">
+      <!-- 第一行 -->
+      <div class = "row">
+        <div class="col-md-12">
+          <div class="jumbotron">
+            <div class="row">
+              <div class="col-md-8" id="maininfo">
+                <h1>(〃＞皿＜)工作室</h1>
+                <p>强悍的实力、无比的创意，Join us right now！</p>
+                <p><a class="btn btn-primary btn-lg" role="button">点击更多了解</a></p>
+              </div>
+
+              <div class="col-md-4" id="logo">
+                <img src="/static/image/stone.jpg" 
+                class="img-thumbnail">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 第二行 -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="bodyCon08">
+            <div class="students">
+              <div id="four_flash">
+                <div class="flashBg">
+                  <ul class="mobile">
+                    {% block content %}
+                    {% for member in members %}
+                    <li>
+                      <img src="/static/image/{{member.image}}" />
+                      <dd>{{ member.name }}</dd>
+                      <p>{{ member.master }}</p>
+                    </li>
+                    {% endfor %}
+                    {% endblock %}
+                  </ul>
+                </div>
+                <div class="but_left"><img src="/static/image/qianxleft.png" /></div>
+                <div class="but_right"><img src="/static/image/qianxr.png" /></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- 第三行 -->
+      <div class="row">
+        <div class="col-md-12" id="foot">
+          <p>Copyright ©2016, All Rights Reserve</p>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</body>
+</html>

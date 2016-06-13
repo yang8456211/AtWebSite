@@ -4,6 +4,6 @@ from teammate.models import TeamMate
 
 from django.shortcuts import render_to_response
 
-def index(request):
+def showTeammate(request):
     members = TeamMate.objects.all()
-    return render_to_response('index.html',{'members':members})
+    return render_to_response('teammate.html',{'members':members})
